@@ -19,7 +19,7 @@ public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	
+	// 수정을 하기 위해 한 행의 정보를 조회한다.
 	public Board getBoard(int boardNo) {
 		return boardMapper.selectBoard(boardNo);		
 	}

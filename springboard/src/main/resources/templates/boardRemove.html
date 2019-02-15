@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>삭제 화면</title>
+</head>
+<body>
+<a th:href="@{/boardList}"><button th:text="글목록보기"></button></a>
+<form action="/boardRemoveAction" method="post">
+	<table>
+		<tr>
+			<td th:text="boardNo"></td>
+			<td><input th:value="${boardNo}" type="text" name="boardNo"  readonly="readonly" size="30"></td>
+		</tr>
+		<tr>
+			<td th:text="boardPw"></td>
+			<td><input type="text" name="boardPw" size="30"></td>
+		</tr>
+		
+		<tr>
+		<td></td>
+		<th>
+			<input th:value="삭제" type="submit">
+			<input th:value="초기화" type="reset"> 
+		</th>
+		</tr>	
+	</table>
+		
+</form>
+
+</body>
+</html>

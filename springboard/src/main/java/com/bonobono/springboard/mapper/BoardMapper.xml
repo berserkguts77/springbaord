@@ -29,6 +29,7 @@
 			FROM board 
 			ORDER BY board_no DESC 
 			LIMIT #{currentPage}, #{rowPerPage}
+			<!-- 이제 쿼리문에 물음표(?)를 사용하지 않네... -->
 	</select>
 	<!-- DB에저장된  게시물의 수를 가져온다 -->
 	<select id="selectBoardCount"
@@ -78,7 +79,9 @@
 				board 
 			SET 
 				board_title= #{boardTitle}, 
-				board_content= #{boardContent} 
+				board_content= #{boardContent},
+				board_user= #{boardUser}, 
+				board_date= now() 
 			WHERE 
 				board_no= #{boardNo} 
 			AND 

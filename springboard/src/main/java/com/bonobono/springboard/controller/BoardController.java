@@ -19,13 +19,38 @@ import com.bonobono.springboard.vo.Board;
 public class BoardController {
     @Autowired private BoardService boardService;
     
- // 글 삭제 폼 요청(비밀번호 입력 폼)
-    @GetMapping(value="/boardRemove")
-    public String boardRemove(@RequestParam(value="boardNo", required=true) int boardNo) {
-        return "boardRemove";
+    // 글 수정 폼 요청(비밀번호 입력 폼)
+    @GetMapping(value="/boardModify")
+    public String boardmodify(Model model, 
+    		@RequestParam(value="boardNo", required=true) int boardNo) {
+    	System.out.println("boardModify 폼 요청");
+    	//먼저 게시판 글 번호를 통해 정보를 조회한다.
+    	Board board = boardService.getBoard(boardNo);
+    	model.addAttribute("board", board);
+    	model.addAttribute("boardNo", boardNo);
+    	return "boardModify";
     }
-    // 글 삭제 요청
-    @RequestMapping(value="/boardAdd", method = RequestMethod.POST)
+    
+    // 글 수정(액션) 요청   
+    @RequestMapping(value="/boardModifyAction", method = RequestMethod.POST)
+    public String boardmodify(Board board) {
+    	System.out.println("boardModify 액션 요청");
+    	boardService.modifyBoard(board);
+    	return "redirect:/boardList";
+    	// 포워드가 아닌 화면전송은 리다이렉트
+    }
+    
+    
+    
+    // 글 삭제 폼 요청(비밀번호 입력 폼)
+    @GetMapping(value="/boardRemove")
+    public String boardRemove(Model model,
+    		@RequestParam(value="boardNo", required=true) int boardNo) {
+        model.addAttribute("boardNo", boardNo);
+    	return "boardRemove";
+    }
+    // 글 삭제(액션) 요청
+    @RequestMapping(value="/boardRemoveAction", method = RequestMethod.POST)
     public String boardRemove(Board board) {
     	boardService.removeBoard(board);
         return "redirect:/boardList";
@@ -37,6 +62,7 @@ public class BoardController {
                             , @RequestParam(value="boardNo", required=true) int boardNo) {
         Board board = boardService.getBoard(boardNo);
         model.addAttribute("board", board);
+        model.addAttribute("boardNo", boardNo);
         return "/boardView";
     }
     
