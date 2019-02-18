@@ -5,31 +5,26 @@
 <title>게시판 목록</title>
 </head>
 <body>
-
+BoardList<br>
 <table border=1>
 	<tr>
 		<td>boardNo</td>
 		<td>boardTitle</td>
 		<td>boardUser</td>
 		<td>boardDate</td>
-		<td>수정</td>
-		<td>삭제</td>
 	</tr>
 	<tr th:each="l : ${list}">
 		<td th:text="${l.boardNo}"></td>
 		<td><a th:href="@{/boardView(boardNo=${l.boardNo})}" th:text="${l.boardTitle}"></a></td>
 		<td th:text="${l.boardUser}"></td>
 		<td th:text="${l.boardDate}"></td>
-		<td><a th:href="@{/boardModify(boardNo=${l.boardNo})}">수정</a></td>
-		<td><a th:href="@{/boardRemove(boardNo=${l.boardNo})}">삭제</a></td>
 	</tr>	
 </table>
 	<a th:href="@{/boardList(currentPage=0)}" ><button th:text="처음으로"></button></a>
 	<a th:if="${currentPage > 0}" th:href="@{/boardList(currentPage=${currentPage-1})}" ><button th:text="이전"></button></a>
-	<a th:if="${lastPage >= currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a>
+	<a th:if="${lastPage > currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a>
 	<a th:href="@{/boardList(currentPage=${lastPage})}" ><button th:text="끝으로"></button></a><br/>
 	<a th:href="@{/boardAdd}" ><button th:text="글등록하기"></button></a> 
-
 </body>
 </html>
 

@@ -5,6 +5,7 @@
 <title>게시글 상세 화면</title>
 </head>
 <body>
+BoardView<br>
 <a th:href="@{/boardList}"><button th:text="글목록보기"></button></a>
 	<table>
 		<tr>
@@ -24,5 +25,7 @@
 			<td th:text="${board.boardUser}"></td>
 		</tr>
 	</table>
+		<a th:href="@{/boardModify(boardNo=${boardNo})}"><button th:text="수정"></button></a>
+		<a th:href="@{/boardRemove(boardNo=${boardNo})}"><button th:text="삭제"></button></a>
 </body>
 </html>

@@ -50,6 +50,7 @@ public class BoardService {
 	}
 	
 	public int addBoard(Board board) {
+		
 		return boardMapper.insertBoard(board);
 		
 	}
