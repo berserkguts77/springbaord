@@ -2,6 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="css/freelancer.min.css" rel="stylesheet">
 <title>게시글 입력 화면</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -37,35 +54,65 @@
 
 </head>
 <body>
-BoardAdd<br>
-<a th:href="@{/boardList}"><button th:text="글목록보기"></button></a>
-<form action="/boardAddAction" id="addPost" method="post">
-	<table>
-		<tr>
-			<td th:text="boardPw"></td>
-			<td><input type="text" id="boardPw" name="boardPw" size="30"></td>
-		</tr>
-		<tr>
-			<td th:text="boardTitle"></td>
-			<td><input type="text" id="boardTitle" name="boardTitle" size="30"></td>
-		</tr>
-		<tr>
-			<td th:text="boardContent"></td>
-			<td><textarea name="boardContent" id="boardContent" rows="10" cols="31"></textarea></td>
-		</tr>
-		<tr>
-			<td th:text="Name"></td>
-			<td><input type="text" id="boardUser" name="boardUser" size="30"></td>
-		</tr>
-		<tr>
-		<th>
-			<input th:value="글입력" id="addYes" type="submit">
-			<input th:value="초기화" type="reset"> 
-		</th>
-		</tr>	
-	</table>
-		
-</form>
 
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" th:href="@{/index}">Home</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardList}">List</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardAdd}">Add</a>
+          </li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+
+	<br>
+	<section class="Add" id="Add">
+	    <div class="container">
+	      <h2 class="text-center text-uppercase text-secondary mb-0">Add</h2>
+	      <hr class="star-dark mb-5">
+	      <div class="row">
+				<form action="/boardAddAction" id="addPost" method="post">
+					<table>
+						<tr>
+							<td th:text="boardPw"></td>
+							<td><input type="text" id="boardPw" name="boardPw" size="30"></td>
+						</tr>
+						<tr>
+							<td th:text="boardTitle"></td>
+							<td><input type="text" id="boardTitle" name="boardTitle" size="30"></td>
+						</tr>
+						<tr>
+							<td th:text="boardContent"></td>
+							<td><textarea name="boardContent" id="boardContent" rows="10" cols="31"></textarea></td>
+						</tr>
+						<tr>
+							<td th:text="Name"></td>
+							<td><input type="text" id="boardUser" name="boardUser" size="30"></td>
+						</tr>
+						<tr>
+						<th>
+							<input th:value="글입력" id="addYes" type="submit">
+							<input th:value="초기화" type="reset"> 
+						</th>
+						</tr>	
+					</table>
+						
+				</form>
+				
+		    </div>
+	    </div>
+	</section>
 </body>
 </html>

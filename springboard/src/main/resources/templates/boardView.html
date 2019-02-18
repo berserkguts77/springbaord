@@ -2,30 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="css/freelancer.min.css" rel="stylesheet">
+
+
 <title>게시글 상세 화면</title>
 </head>
 <body>
-BoardView<br>
-<a th:href="@{/boardList}"><button th:text="글목록보기"></button></a>
-	<table>
-		<tr>
-			<td th:text="boardNo"></td>
-			<td th:text="${boardNo}"></td>
-		</tr>
-		<tr>
-			<td th:text="boardTitle"></td>
-			<td th:text="${board.boardTitle}"></td>
-		</tr>
-		<tr>
-			<td th:text="boardContent"></td>
-			<td th:text="${board.boardContent}"></td>
-		</tr>
-		<tr>
-			<td th:text="Name"></td>
-			<td th:text="${board.boardUser}"></td>
-		</tr>
-	</table>
-		<a th:href="@{/boardModify(boardNo=${boardNo})}"><button th:text="수정"></button></a>
-		<a th:href="@{/boardRemove(boardNo=${boardNo})}"><button th:text="삭제"></button></a>
+
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" th:href="@{/index}">Home</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardList}">List</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardAdd}">Add</a>
+          </li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <br>
+	<section class="View" id="View">
+	    <div class="container">
+	      <h2 class="text-center text-uppercase text-secondary mb-0">View</h2>
+	      <hr class="star-dark mb-5">
+	      <div class="row">
+				<table  border=1 width:100%>
+					<tr>
+						<td th:text="boardNo"></td>
+						<td th:text="${boardNo}"></td>
+					</tr>
+					<tr>
+						<td th:text="boardTitle"></td>
+						<td th:text="${board.boardTitle}"></td>
+					</tr>
+					<tr>
+						<td th:text="boardContent"></td>
+						<td th:text="${board.boardContent}"></td>
+					</tr>
+					<tr>
+						<td th:text="Name"></td>
+						<td th:text="${board.boardUser}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="container">
+	    	<div class="row">
+				<a th:href="@{/boardModify(boardNo=${boardNo})}"><button th:text="수정"></button></a>
+				<a th:href="@{/boardRemove(boardNo=${boardNo})}"><button th:text="삭제"></button></a>
+		
+			</div>
+	    </div>
+	</section>
+
 </body>
 </html>

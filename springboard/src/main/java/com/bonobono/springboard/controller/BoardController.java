@@ -66,10 +66,17 @@ public class BoardController {
         return "/boardView";
     }
     
+    // 리스트 요청 index
+    @GetMapping(value="/index")
+    public String index() {
+    	System.out.println("index 요청");
+        return "index";
+    }
+    
     // 리스트 요청
     @GetMapping(value="/boardList")
     public String boardList(Model model
-                            , @RequestParam(value="currentPage", required=false, defaultValue="0") int currentPage) {
+                            , @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
     	Map<String, Object> map = boardService.selectBoardList(currentPage);
     	model.addAttribute("list",map.get("list"));
     	model.addAttribute("boardCount",map.get("boardCount"));

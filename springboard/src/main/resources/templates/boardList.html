@@ -2,29 +2,87 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="css/freelancer.min.css" rel="stylesheet">
+
 <title>게시판 목록</title>
 </head>
 <body>
-BoardList<br>
-<table border=1>
-	<tr>
-		<td>boardNo</td>
-		<td>boardTitle</td>
-		<td>boardUser</td>
-		<td>boardDate</td>
-	</tr>
-	<tr th:each="l : ${list}">
-		<td th:text="${l.boardNo}"></td>
-		<td><a th:href="@{/boardView(boardNo=${l.boardNo})}" th:text="${l.boardTitle}"></a></td>
-		<td th:text="${l.boardUser}"></td>
-		<td th:text="${l.boardDate}"></td>
-	</tr>	
-</table>
-	<a th:href="@{/boardList(currentPage=0)}" ><button th:text="처음으로"></button></a>
-	<a th:if="${currentPage > 0}" th:href="@{/boardList(currentPage=${currentPage-1})}" ><button th:text="이전"></button></a>
-	<a th:if="${lastPage > currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a>
-	<a th:href="@{/boardList(currentPage=${lastPage})}" ><button th:text="끝으로"></button></a><br/>
-	<a th:href="@{/boardAdd}" ><button th:text="글등록하기"></button></a> 
+
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" th:href="@{/index}">Home</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardList}">List</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/boardAdd}">Add</a>
+          </li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+
+	<br>
+	<section class="List" id="List">
+	    <div class="container">
+	      <h2 class="text-center text-uppercase text-secondary mb-0">List</h2>
+	      <hr class="star-dark mb-5">
+	      <div class="row">
+	        <table  border=1 width:100%>
+				<tr>
+					<td>boardNo</td>
+					<td>boardTitle</td>
+					<td>boardUser</td>
+					<td>boardDate</td>
+				</tr>
+				<tr th:each="l : ${list}">
+					<td th:text="${l.boardNo}"></td>
+					<td><a th:href="@{/boardView(boardNo=${l.boardNo})}" th:text="${l.boardTitle}"></a></td>
+					<td th:text="${l.boardUser}"></td>
+					<td th:text="${l.boardDate}"></td>
+				</tr>	
+			</table>
+	      </div>
+	    </div>
+	    
+	    <div class="container">
+	    	<div class="row">
+	    		<a th:href="@{/boardList}" ><button th:text="처음으로"></button></a>
+				<a th:if="${currentPage > 1}" th:href="@{/boardList(currentPage=${currentPage-1})}" ><button th:text="이전"></button></a>
+				<a th:if="${lastPage > currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a>
+				<a th:href="@{/boardList(currentPage=${lastPage})}" ><button th:text="끝으로"></button></a><br/>
+			</div>
+	    </div>
+	</section>
+		
+		
+			
+
+
 </body>
 </html>
 
