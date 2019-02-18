@@ -3,33 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 입력 화면</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+            $('#addYes').click(function(){
+                $('#addPost').submit(function(event){
+                    if($('#boardPw').val().length<6){
+                        $('#boardPw').attr('placeholder','pw는 6자 이상 입력해주세요');
+                        $('#boardPw').focus();
+                        return false;
+                    }else if($('#boardTitle').val().length<1){
+                        $('#boardTitle').attr('placeholder','제목을 입력해주세요.');
+                        $('#boardTitle').focus();
+                        return false;
+                    }else if($('#boardContent').val().length<1){
+                        $('#boardContent').attr('placeholder','내용을 입력해 주세요');
+                        $('#boardContent').focus();
+                        return false;
+                    }else if($('#boardUser').val().length<1){
+                        $('#boardUser').attr('placeholder','작성자를 입력해주세요');
+                        $('#boardUser').focus();
+                        return false;
+                    }
+                });
+            });
+        });
+
+
+</script>
+
 </head>
 <body>
 BoardAdd<br>
 <a th:href="@{/boardList}"><button th:text="글목록보기"></button></a>
-<form action="/boardAddAction" method="post">
+<form action="/boardAddAction" id="addPost" method="post">
 	<table>
 		<tr>
 			<td th:text="boardPw"></td>
-			<td><input type="text" name="boardPw" size="30"></td>
+			<td><input type="text" id="boardPw" name="boardPw" size="30"></td>
 		</tr>
 		<tr>
 			<td th:text="boardTitle"></td>
-			<td><input type="text" name="boardTitle" size="30"></td>
+			<td><input type="text" id="boardTitle" name="boardTitle" size="30"></td>
 		</tr>
 		<tr>
 			<td th:text="boardContent"></td>
-			<td><textarea name="boardContent" rows="10" cols="31">내용입력 해주세요</textarea>
-			</td>
+			<td><textarea name="boardContent" id="boardContent" rows="10" cols="31"></textarea></td>
 		</tr>
 		<tr>
 			<td th:text="Name"></td>
-			<td><input type="text" name="boardUser" size="30"></td>
+			<td><input type="text" id="boardUser" name="boardUser" size="30"></td>
 		</tr>
 		<tr>
-		<td></td>
 		<th>
-			<input th:value="글입력" type="submit">
+			<input th:value="글입력" id="addYes" type="submit">
 			<input th:value="초기화" type="reset"> 
 		</th>
 		</tr>	
