@@ -24,30 +24,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
-
-    $(document).ready(function(){
-            $('#addYes').click(function(){
-                $('#addPost').submit(function(event){
-                    if($('#boardPw').val().length<6){
-                        $('#boardPw').attr('placeholder','pw는 6자 이상 입력해주세요');
-                        $('#boardPw').focus();
-                        return false;
-                    }else if($('#boardTitle').val().length<1){
-                        $('#boardTitle').attr('placeholder','제목을 입력해주세요.');
-                        $('#boardTitle').focus();
-                        return false;
-                    }else if($('#boardContent').val().length<1){
-                        $('#boardContent').attr('placeholder','내용을 입력해 주세요');
-                        $('#boardContent').focus();
-                        return false;
-                    }else if($('#boardUser').val().length<1){
-                        $('#boardUser').attr('placeholder','작성자를 입력해주세요');
-                        $('#boardUser').focus();
-                        return false;
-                    }
-                });
-            });
-        });
+	
+	$(document).ready(function(){
+	    $('#addYes').click(function(){
+	        $('#addPost').submit(function(event){
+	            if($('#boardPw').val().length<6){
+	                $('#boardPw').attr('placeholder','pw는 6자 이상 입력해주세요');
+	                $('#boardPw').focus();
+	                return false;
+	            }else if($('#boardTitle').val().length<1){
+	                $('#boardTitle').attr('placeholder','제목을 입력해주세요.');
+	                $('#boardTitle').focus();
+	                return false;
+	            }else if($('#boardContent').val().length<1){
+	                $('#boardContent').attr('placeholder','내용을 입력해 주세요');
+	                $('#boardContent').focus();
+	                return false;
+	            }else if($('#boardUser').val().length<1){
+	                $('#boardUser').attr('placeholder','작성자를 입력해주세요');
+	                $('#boardUser').focus();
+	                return false;
+	            }
+	        });
+	    });
+	}); 
 
 
 </script>
@@ -84,7 +84,7 @@
 	      <hr class="star-dark mb-5">
 	      <div class="row">
 				<form action="/boardAddAction" id="addPost" method="post">
-					<table>
+					<table class="table">
 						<tr>
 							<td th:text="boardPw"></td>
 							<td><input type="text" id="boardPw" name="boardPw" size="30"></td>

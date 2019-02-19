@@ -52,12 +52,12 @@
 	      <h2 class="text-center text-uppercase text-secondary mb-0">List</h2>
 	      <hr class="star-dark mb-5">
 	      <div class="row">
-	        <table  border=1 width:100%>
+	        <table class="table">
 				<tr>
-					<td>boardNo</td>
-					<td>boardTitle</td>
-					<td>boardUser</td>
-					<td>boardDate</td>
+					<th>boardNo</th>
+					<th>boardTitle</th>
+					<th>boardUser</th>
+					<th>boardDate</th>
 				</tr>
 				<tr th:each="l : ${list}">
 					<td th:text="${l.boardNo}"></td>
